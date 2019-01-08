@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.silverbullet.specialcloudstore.dao.bitStoreMapper">
+  <resultMap id="BaseResultMap" type="com.silverbullet.specialcloudstore.domain.bitStore">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="version" jdbcType="BIGINT" property="version" />
+    <result column="author" jdbcType="BIGINT" property="author" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="report_status" jdbcType="VARCHAR" property="reportStatus" />
+    <result column="storetech" jdbcType="VARCHAR" property="storetech" />
+    <result column="storetype" jdbcType="VARCHAR" property="storetype" />
+    <result column="storeurl" jdbcType="VARCHAR" property="storeurl" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="updator" jdbcType="BIGINT" property="updator" />
+    <result column="micro_store_id" jdbcType="BIGINT" property="microStoreId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="storefrom" jdbcType="VARCHAR" property="storefrom" />
+    <result column="storesource" jdbcType="VARCHAR" property="storesource" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id,version,author,create_date,remark,report_status,storetech,storetype,storeurl,update_date,updator,micro_store_id,name,storefrom,storesource
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bit_store
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bit_store
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert"  keyProperty="id" useGeneratedKeys="true" parameterType="com.silverbullet.specialcloudstore.domain.bitStore">
+    insert into bit_store (id,version,author,create_date,remark,report_status,storetech,storetype,storeurl,update_date,updator,micro_store_id,name,storefrom,storesource)
+    values (#{id,jdbcType=BIGINT},#{version,jdbcType=BIGINT},#{author,jdbcType=BIGINT},#{createDate,jdbcType=TIMESTAMP},#{remark,jdbcType=VARCHAR},#{reportStatus,jdbcType=VARCHAR},#{storetech,jdbcType=VARCHAR},#{storetype,jdbcType=VARCHAR},#{storeurl,jdbcType=VARCHAR},#{updateDate,jdbcType=TIMESTAMP},#{updator,jdbcType=BIGINT},#{microStoreId,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},#{storefrom,jdbcType=VARCHAR},#{storesource,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.silverbullet.specialcloudstore.domain.bitStore">
+    insert into bit_store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+
+        <if test="id != null">
+               id ,
+        </if>
+        <if test="version != null">
+               version ,
+        </if>
+        <if test="author != null">
+               author ,
+        </if>
+        <if test="createDate != null">
+               create_date ,
+        </if>
+        <if test="remark != null">
+               remark ,
+        </if>
+        <if test="reportStatus != null">
+               report_status ,
+        </if>
+        <if test="storetech != null">
+               storetech ,
+        </if>
+        <if test="storetype != null">
+               storetype ,
+        </if>
+        <if test="storeurl != null">
+               storeurl ,
+        </if>
+        <if test="updateDate != null">
+               update_date ,
+        </if>
+        <if test="updator != null">
+               updator ,
+        </if>
+        <if test="microStoreId != null">
+               micro_store_id ,
+        </if>
+        <if test="name != null">
+               name ,
+        </if>
+        <if test="storefrom != null">
+               storefrom ,
+        </if>
+        <if test="storesource != null">
+               storesource ,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="id != null">
+            #{id,jdbcType=BIGINT},
+         </if>
+        <if test="version != null">
+            #{version,jdbcType=BIGINT},
+         </if>
+        <if test="author != null">
+            #{author,jdbcType=BIGINT},
+         </if>
+        <if test="createDate != null">
+            #{createDate,jdbcType=TIMESTAMP},
+         </if>
+        <if test="remark != null">
+            #{remark,jdbcType=VARCHAR},
+         </if>
+        <if test="reportStatus != null">
+            #{reportStatus,jdbcType=VARCHAR},
+         </if>
+        <if test="storetech != null">
+            #{storetech,jdbcType=VARCHAR},
+         </if>
+        <if test="storetype != null">
+            #{storetype,jdbcType=VARCHAR},
+         </if>
+        <if test="storeurl != null">
+            #{storeurl,jdbcType=VARCHAR},
+         </if>
+        <if test="updateDate != null">
+            #{updateDate,jdbcType=TIMESTAMP},
+         </if>
+        <if test="updator != null">
+            #{updator,jdbcType=BIGINT},
+         </if>
+        <if test="microStoreId != null">
+            #{microStoreId,jdbcType=BIGINT},
+         </if>
+        <if test="name != null">
+            #{name,jdbcType=VARCHAR},
+         </if>
+        <if test="storefrom != null">
+            #{storefrom,jdbcType=VARCHAR},
+         </if>
+        <if test="storesource != null">
+            #{storesource,jdbcType=VARCHAR},
+         </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.silverbullet.specialcloudstore.domain.bitStore">
+    update bit_store
+    <set>
+        <if test="id != null">
+         id = #{id,jdbcType=BIGINT},
+        </if>
+        <if test="version != null">
+         version = #{version,jdbcType=BIGINT},
+        </if>
+        <if test="author != null">
+         author = #{author,jdbcType=BIGINT},
+        </if>
+        <if test="createDate != null">
+         create_date = #{createDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="remark != null">
+         remark = #{remark,jdbcType=VARCHAR},
+        </if>
+        <if test="reportStatus != null">
+         report_status = #{reportStatus,jdbcType=VARCHAR},
+        </if>
+        <if test="storetech != null">
+         storetech = #{storetech,jdbcType=VARCHAR},
+        </if>
+        <if test="storetype != null">
+         storetype = #{storetype,jdbcType=VARCHAR},
+        </if>
+        <if test="storeurl != null">
+         storeurl = #{storeurl,jdbcType=VARCHAR},
+        </if>
+        <if test="updateDate != null">
+         update_date = #{updateDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="updator != null">
+         updator = #{updator,jdbcType=BIGINT},
+        </if>
+        <if test="microStoreId != null">
+         micro_store_id = #{microStoreId,jdbcType=BIGINT},
+        </if>
+        <if test="name != null">
+         name = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="storefrom != null">
+         storefrom = #{storefrom,jdbcType=VARCHAR},
+        </if>
+        <if test="storesource != null">
+         storesource = #{storesource,jdbcType=VARCHAR},
+        </if>
+    </set>
+     where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.silverbullet.specialcloudstore.domain.bitStore">
+
+    update bit_store
+    set id = #{id,jdbcType=BIGINT},version = #{version,jdbcType=BIGINT},author = #{author,jdbcType=BIGINT},create_date = #{createDate,jdbcType=TIMESTAMP},remark = #{remark,jdbcType=VARCHAR},report_status = #{reportStatus,jdbcType=VARCHAR},storetech = #{storetech,jdbcType=VARCHAR},storetype = #{storetype,jdbcType=VARCHAR},storeurl = #{storeurl,jdbcType=VARCHAR},update_date = #{updateDate,jdbcType=TIMESTAMP},updator = #{updator,jdbcType=BIGINT},micro_store_id = #{microStoreId,jdbcType=BIGINT},name = #{name,jdbcType=VARCHAR},storefrom = #{storefrom,jdbcType=VARCHAR},storesource = #{storesource,jdbcType=VARCHAR}
+     where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bit_store
+  </select>
+
+  <select id="countNum" resultType="Integer">
+    select count(*) from bit_store
+  </select>
+
+</mapper>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.silverbullet.specialcloudproject.dao.projectInfoMapper">
+  <resultMap id="BaseResultMap" type="com.silverbullet.specialcloudproject.domain.projectInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="del_type" jdbcType="VARCHAR" property="delType" />
+    <result column="descript" jdbcType="VARCHAR" property="descript" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="enterprise_name" jdbcType="VARCHAR" property="enterpriseName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="version" jdbcType="BIGINT" property="version" />
+    <result column="author" jdbcType="BIGINT" property="author" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id,address,contacts,create_date,del_type,descript,email,enterprise_name,name,phone,version,author
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from project_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from project_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert"  keyProperty="id" useGeneratedKeys="true" parameterType="com.silverbullet.specialcloudproject.domain.projectInfo">
+    insert into project_info (id,address,contacts,create_date,del_type,descript,email,enterprise_name,name,phone,version,author)
+    values (#{id,jdbcType=BIGINT},#{address,jdbcType=VARCHAR},#{contacts,jdbcType=VARCHAR},#{createDate,jdbcType=TIMESTAMP},#{delType,jdbcType=VARCHAR},#{descript,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{enterpriseName,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{version,jdbcType=BIGINT},#{author,jdbcType=BIGINT})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.silverbullet.specialcloudproject.domain.projectInfo">
+    insert into project_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+
+        <if test="id != null">
+               id ,
+        </if>
+        <if test="address != null">
+               address ,
+        </if>
+        <if test="contacts != null">
+               contacts ,
+        </if>
+        <if test="createDate != null">
+               create_date ,
+        </if>
+        <if test="delType != null">
+               del_type ,
+        </if>
+        <if test="descript != null">
+               descript ,
+        </if>
+        <if test="email != null">
+               email ,
+        </if>
+        <if test="enterpriseName != null">
+               enterprise_name ,
+        </if>
+        <if test="name != null">
+               name ,
+        </if>
+        <if test="phone != null">
+               phone ,
+        </if>
+        <if test="version != null">
+               version ,
+        </if>
+        <if test="author != null">
+               author ,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="id != null">
+            #{id,jdbcType=BIGINT},
+         </if>
+        <if test="address != null">
+            #{address,jdbcType=VARCHAR},
+         </if>
+        <if test="contacts != null">
+            #{contacts,jdbcType=VARCHAR},
+         </if>
+        <if test="createDate != null">
+            #{createDate,jdbcType=TIMESTAMP},
+         </if>
+        <if test="delType != null">
+            #{delType,jdbcType=VARCHAR},
+         </if>
+        <if test="descript != null">
+            #{descript,jdbcType=VARCHAR},
+         </if>
+        <if test="email != null">
+            #{email,jdbcType=VARCHAR},
+         </if>
+        <if test="enterpriseName != null">
+            #{enterpriseName,jdbcType=VARCHAR},
+         </if>
+        <if test="name != null">
+            #{name,jdbcType=VARCHAR},
+         </if>
+        <if test="phone != null">
+            #{phone,jdbcType=VARCHAR},
+         </if>
+        <if test="version != null">
+            #{version,jdbcType=BIGINT},
+         </if>
+        <if test="author != null">
+            #{author,jdbcType=BIGINT},
+         </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.silverbullet.specialcloudproject.domain.projectInfo">
+    update project_info
+    <set>
+        <if test="id != null">
+         id = #{id,jdbcType=BIGINT},
+        </if>
+        <if test="address != null">
+         address = #{address,jdbcType=VARCHAR},
+        </if>
+        <if test="contacts != null">
+         contacts = #{contacts,jdbcType=VARCHAR},
+        </if>
+        <if test="createDate != null">
+         create_date = #{createDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="delType != null">
+         del_type = #{delType,jdbcType=VARCHAR},
+        </if>
+        <if test="descript != null">
+         descript = #{descript,jdbcType=VARCHAR},
+        </if>
+        <if test="email != null">
+         email = #{email,jdbcType=VARCHAR},
+        </if>
+        <if test="enterpriseName != null">
+         enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+        </if>
+        <if test="name != null">
+         name = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="phone != null">
+         phone = #{phone,jdbcType=VARCHAR},
+        </if>
+        <if test="version != null">
+         version = #{version,jdbcType=BIGINT},
+        </if>
+        <if test="author != null">
+         author = #{author,jdbcType=BIGINT},
+        </if>
+    </set>
+     where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.silverbullet.specialcloudproject.domain.projectInfo">
+
+    update project_info
+    set id = #{id,jdbcType=BIGINT},address = #{address,jdbcType=VARCHAR},contacts = #{contacts,jdbcType=VARCHAR},create_date = #{createDate,jdbcType=TIMESTAMP},del_type = #{delType,jdbcType=VARCHAR},descript = #{descript,jdbcType=VARCHAR},email = #{email,jdbcType=VARCHAR},enterprise_name = #{enterpriseName,jdbcType=VARCHAR},name = #{name,jdbcType=VARCHAR},phone = #{phone,jdbcType=VARCHAR},version = #{version,jdbcType=BIGINT},author = #{author,jdbcType=BIGINT}
+     where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from project_info
+  </select>
+
+  <select id="countNum" resultType="Integer">
+    select count(*) from project_info
+  </select>
+
+</mapper>
